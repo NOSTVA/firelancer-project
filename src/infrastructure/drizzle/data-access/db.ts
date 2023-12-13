@@ -4,7 +4,7 @@ import { migrate } from "drizzle-orm/node-postgres/migrator";
 import closeWithGrace from "close-with-grace";
 import { env } from "@config/env";
 import { logger } from "@config/logger";
-import * as schema from "./schema";
+import * as schema from "@infrastructure/drizzle/data-access/schema";
 
 export default class DBService {
   public db: NodePgDatabase<typeof schema>;

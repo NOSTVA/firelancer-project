@@ -1,6 +1,6 @@
-import { User } from "@domain/User";
+import { TCreateUserDto, TCreateUserResult, TGetUserDto, TUserDto } from "@domain/types/user";
 
 export interface IUserRepository {
-  save(user: User): Promise<boolean>;
-  find(id: string): Promise<User | undefined>;
+  save(user: TCreateUserDto): Promise<TCreateUserResult>;
+  find(opts: TGetUserDto): Promise<TUserDto | undefined>;
 }

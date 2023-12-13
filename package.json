@@ -4,11 +4,16 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.json",
+    "build": "rimraf ./dist && tsc -p tsconfig.json",
     "build:watch": "npm run build -- --watch",
-    "start": "node /dist",
-    "dev": "nodemon -L --watch /dist",
-    "start:dev": "concurrently --kill-others-on-fail \"npm run build:watch\" \"npm run dev\""
+    "start": "node ./dist/index.js",
+    "dev": "nodemon ./dist/index.js",
+    "start:dev": "concurrently --kill-others-on-fail \"npm run build:watch\" \"npm run dev\"",
+    "db:generate": "drizzle-kit generate:pg --config=src/config/drizzle.config.ts",
+    "db:drop": "drizzle-kit drop --config=src/config/drizzle.config.ts",
+    "db:push": "drizzle-kit push:pg --config=src/config/drizzle.config.ts",
+    "studio": "drizzle-kit studio --config=src/config/drizzle.config.ts",
+    "secret-key": "@fastify/secure-session | Out-File -Encoding default -NoNewline -FilePath secret-key"
   },
   "keywords": [],
   "author": "",
@@ -46,11 +51,11 @@
     "zod-to-json-schema": "^3.22.2"
   },
   "_moduleAliases": {
-    "@domain": "dist/domain",
-    "@application": "dist/application",
-    "@infrastucture": "dist/infrastucture",
-    "@main": "dist/main",
-    "@config": "config*",
-    "@shared": "shared*"
+    "@domain": "dist/src/domain",
+    "@application": "dist/src/application",
+    "@infrastructure": "dist/src/infrastructure",
+    "@main": "dist/src/main",
+    "@config": "dist/src/config",
+    "@shared": "dist/src/shared"
   }
 }

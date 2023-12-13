@@ -1,4 +1,4 @@
-import "module-alias/register";
+require("module-alias/register");
 import { Server } from "@main/Server";
 import { logger } from "@config/logger";
 

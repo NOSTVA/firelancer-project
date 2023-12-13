@@ -1,5 +1,5 @@
 import z from "zod";
-import { CreateUserDto, CreateUserResult, GetUserDto, UserDto } from "../schemas/user.schema";
+import { CreateUserDto, CreateUserResult, GetUserDto, UserDto } from "@domain/schemas/user.schema";
 
 export type TCreateUserDto = z.infer<typeof CreateUserDto>;
 
