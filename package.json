@@ -1,0 +1,56 @@
+{
+  "name": "firelancer-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rimraf dist && tsc -p tsconfig.json",
+    "build:watch": "npm run build -- --watch",
+    "start": "node /dist",
+    "dev": "nodemon -L --watch /dist",
+    "start:dev": "concurrently --kill-others-on-fail \"npm run build:watch\" \"npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "@types/pg": "^8.10.9",
+    "concurrently": "^8.2.2",
+    "drizzle-kit": "^0.20.6",
+    "nodemon": "^3.0.2",
+    "pino-pretty": "^10.2.3",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@fastify/autoload": "^5.8.0",
+    "@fastify/multipart": "^8.0.0",
+    "@fastify/passport": "^2.4.0",
+    "@fastify/secure-session": "^7.1.0",
+    "@fastify/static": "^6.12.0",
+    "@fastify/swagger": "^8.12.1",
+    "@fastify/swagger-ui": "^2.0.1",
+    "close-with-grace": "^1.2.0",
+    "drizzle-orm": "^0.29.1",
+    "env-schema": "^5.2.1",
+    "fastify": "^4.25.0",
+    "fastify-plugin": "^4.5.1",
+    "fastify-zod": "^1.4.0",
+    "module-alias": "^2.2.3",
+    "passport-local": "^1.0.0",
+    "pg": "^8.11.3",
+    "pino": "^8.17.0",
+    "swagger-themes": "^1.2.30",
+    "zod": "^3.22.4",
+    "zod-to-json-schema": "^3.22.2"
+  },
+  "_moduleAliases": {
+    "@domain": "dist/domain",
+    "@application": "dist/application",
+    "@infrastucture": "dist/infrastucture",
+    "@main": "dist/main",
+    "@config": "config*",
+    "@shared": "shared*"
+  }
+}
