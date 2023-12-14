@@ -1,5 +1,5 @@
 require("module-alias/register");
-import { Server } from "@main/Server";
+import { Server } from "Server";
 import { logger } from "@config/logger";
 
 export async function main(): Promise<void> {

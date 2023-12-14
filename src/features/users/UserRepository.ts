@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
-import { IUserRepository } from "@application/interfaces/IUserRepository";
-import { users } from "@infrastructure/drizzle/data-access/schema";
-import { db } from "@infrastructure/drizzle/data-access/db";
-import { TCreateUserDto, TCreateUserResult, TGetUserDto, TUserDto } from "@domain/types/user";
+import { IUserRepository } from "./interfaces/IUserRepository";
+import { TCreateUserDto, TCreateUserResult, TGetUserDto, TUserDto } from "./domain/user";
+import { users } from "@infrastructure/drizzle/schema";
+import { db } from "@infrastructure/drizzle/db";
 
 export class UserRepository implements IUserRepository {
   public async save(user: TCreateUserDto): Promise<TCreateUserResult> {

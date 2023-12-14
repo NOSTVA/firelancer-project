@@ -1,4 +1,4 @@
-import { TCreateUserDto, TCreateUserResult, TGetUserDto, TUserDto } from "@domain/types/user";
+import { TCreateUserDto, TCreateUserResult, TGetUserDto, TUserDto } from "../domain/user";
 
 export interface IUserRepository {
   save(user: TCreateUserDto): Promise<TCreateUserResult>;

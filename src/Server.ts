@@ -21,10 +21,6 @@ export class Server {
     app.register(import("@fastify/swagger"), swaggerConfig);
     app.register(import("@fastify/swagger-ui"), swaggerUiConfig);
 
-    // API V1
-    app.register(api);
-    app.get("/asdasd", () => {});
-
     // GRACEFUL DISCONNECT
     closeWithGrace({ delay: 30000 }, ({ signal, err }) => {
       if (err) app.log.error(err);
@@ -33,12 +29,4 @@ export class Server {
 
     return app;
   }
-}
-console.log(path.join(__dirname, "routes"));
-
-export async function api(app: FastifyInstance) {
-  console.log(path.join(__dirname, "routes"));
-  app.register(import("@fastify/autoload"), {
-    dir: path.join(__dirname, "routes"),
-  });
 }

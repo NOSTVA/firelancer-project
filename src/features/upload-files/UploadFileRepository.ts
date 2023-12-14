@@ -1,5 +1,5 @@
-import { IUploadFileRepository } from "@application/interfaces/IUploadFileRepository";
-import { TFileDto, TGetUploadFileDto, TUploadFileDto, TUploadFileResult } from "@domain/types/file";
+import { IUploadFileRepository } from "./interfaces/IUploadFileRepository";
+import { TFileDto, TGetUploadFileDto, TUploadFileDto, TUploadFileResult } from "./domain/file";
 
 export class UploadFileRepository implements IUploadFileRepository {
   public async save(file: TUploadFileDto): Promise<TUploadFileResult> {

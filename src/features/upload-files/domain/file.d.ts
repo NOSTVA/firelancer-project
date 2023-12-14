@@ -1,4 +1,4 @@
-import { GetUploadFileDto, UploadFileDto, UploadFileResult } from "@domain/schemas/file.schema";
+import { GetUploadFileDto, UploadFileDto, UploadFileResult } from "@features/users/domain/user";
 import { z } from "zod";
 
 export type TUploadFileDto = z.infer<typeof UploadFileDto>;

@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CreateUserUseCase } from "@application/usecases/users/CreateUserUseCase";
-import { TCreateUserDto } from "@domain/types/user";
+import { CreateUserUseCase } from "../usecases/CreateUserUseCase";
+import { TCreateUserDto } from "../domain/user";
 
 export class CreateUserController {
   public constructor(private readonly _useCase: CreateUserUseCase) {}

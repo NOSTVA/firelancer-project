@@ -1,5 +1,5 @@
 import type { FastifyReply, FastifyRequest } from "fastify";
-import { GetUserUseCase } from "@application/usecases/users/GetUserUseCase";
+import { GetUserUseCase } from "../usecases/GetUserUseCase";
 
 export class GetUserController {
   public constructor(private readonly _useCase: GetUserUseCase) {}

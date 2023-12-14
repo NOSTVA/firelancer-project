@@ -1,4 +1,4 @@
-import { TFileDto, TGetUploadFileDto, TUploadFileDto, TUploadFileResult } from "@domain/types/file";
+import { TFileDto, TGetUploadFileDto, TUploadFileDto, TUploadFileResult } from "../domain/file";
 
 export interface IUploadFileRepository {
   save(file: TUploadFileDto): Promise<TUploadFileResult>;

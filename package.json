@@ -5,10 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf ./dist && tsc -p tsconfig.json",
-    "build:watch": "npm run build -- --watch",
     "start": "node ./dist/index.js",
-    "dev": "nodemon ./dist/index.js",
-    "start:dev": "concurrently --kill-others-on-fail \"npm run build:watch\" \"npm run dev\"",
+    "dev": "tsx watch ./index.ts",
     "db:generate": "drizzle-kit generate:pg --config=src/config/drizzle.config.ts",
     "db:drop": "drizzle-kit drop --config=src/config/drizzle.config.ts",
     "db:push": "drizzle-kit push:pg --config=src/config/drizzle.config.ts",
@@ -26,6 +24,7 @@
     "nodemon": "^3.0.2",
     "pino-pretty": "^10.2.3",
     "rimraf": "^5.0.5",
+    "tsx": "^4.6.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
@@ -51,11 +50,10 @@
     "zod-to-json-schema": "^3.22.2"
   },
   "_moduleAliases": {
-    "@domain": "dist/src/domain",
-    "@application": "dist/src/application",
     "@infrastructure": "dist/src/infrastructure",
     "@main": "dist/src/main",
     "@config": "dist/src/config",
-    "@shared": "dist/src/shared"
+    "@shared": "dist/src/shared",
+    "@features": "dist/src/features"
   }
 }

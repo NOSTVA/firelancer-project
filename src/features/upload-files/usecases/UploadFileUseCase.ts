@@ -1,6 +1,6 @@
-import { IUploadFileRepository } from "@application/interfaces/IUploadFileRepository";
 import { IUseCase } from "@shared/IUseCase";
-import { TUploadFileDto, TUploadFileResult } from "@domain/types/file";
+import { TUploadFileDto, TUploadFileResult } from "../domain/file";
+import { IUploadFileRepository } from "../interfaces/IUploadFileRepository";
 
 export class UploadFileUseCase implements IUseCase<TUploadFileDto, TUploadFileResult> {
   public constructor(private readonly _fileRepo: IUploadFileRepository) {}

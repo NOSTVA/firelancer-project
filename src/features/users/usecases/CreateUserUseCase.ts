@@ -1,6 +1,6 @@
 import type { IUseCase } from "@shared/IUseCase";
-import type { IUserRepository } from "@application/interfaces/IUserRepository";
-import type { TCreateUserDto, TCreateUserResult } from "@domain/types/user";
+import { TCreateUserDto, TCreateUserResult } from "../domain/user";
+import { IUserRepository } from "../interfaces/IUserRepository";
 
 export class CreateUserUseCase implements IUseCase<TCreateUserDto, TCreateUserResult> {
   public constructor(private readonly _userRepo: IUserRepository) {}
