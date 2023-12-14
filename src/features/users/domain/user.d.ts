@@ -6,6 +6,7 @@ import {
   GetUserResultDto,
   LoginUserDto,
   LoginUserResult,
+  UpdateUserDto,
   UserDto,
 } from "@features/users/domain/user.schema";
 
@@ -22,3 +23,5 @@ export type TUserDto = z.infer<typeof UserDto>;
 export type TLoginUserDto = z.infer<typeof LoginUserDto>;
 
 export type TLoginUserResult = z.infer<typeof LoginUserResult>;
+
+export type TUpdateUserDto = z.infer<typeof UpdateUserDto>;

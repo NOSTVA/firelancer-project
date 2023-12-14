@@ -1,12 +1,11 @@
+import { db } from "@infrastructure/drizzle/db";
+import { TCreateUploadFileDto, TCreateUploadFileResultDto } from "./domain/file";
 import { IUploadFileRepository } from "./interfaces/IUploadFileRepository";
-import { TFileDto, TGetUploadFileDto, TUploadFileDto, TUploadFileResult } from "./domain/file";
+import { files } from "@infrastructure/drizzle/schema";
 
 export class UploadFileRepository implements IUploadFileRepository {
-  public async save(file: TUploadFileDto): Promise<TUploadFileResult> {
-    throw new Error("method not implemented");
-  }
-
-  public async find(opts: TGetUploadFileDto): Promise<TFileDto | undefined> {
-    throw new Error("method not implemented");
+  public async save(file: TCreateUploadFileDto): Promise<TCreateUploadFileResultDto> {
+    const result = await db.insert(files).values(file).returning();
+    return result[0];
   }
 }

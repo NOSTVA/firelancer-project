@@ -4,6 +4,7 @@ import {
   TGetUserDto,
   TGetUserResultDto,
   TLoginUserResult,
+  TUpdateUserDto,
   TUserDto,
 } from "../domain/user";
 
@@ -12,4 +13,5 @@ export interface IUserRepository {
   find(opts: TGetUserDto): Promise<TGetUserResultDto[]>;
   findById(id: string): Promise<TUserDto | undefined>;
   findByEmail(email: string): Promise<TLoginUserResult | undefined>;
+  update(id: string, opts: TUpdateUserDto): Promise<boolean>;
 }

@@ -6,6 +6,7 @@ import {
   TGetUserDto,
   TGetUserResultDto,
   TLoginUserResult,
+  TUpdateUserDto,
   TUserDto,
 } from "./domain/user";
 import { skill_categories, skills, user_skills, users } from "@infrastructure/drizzle/schema";
@@ -111,5 +112,14 @@ export class UserRepository implements IUserRepository {
       .from(users)
       .where(eq(users.email, email));
     return result[0];
+  }
+
+  public async update(id: string, opts: TUpdateUserDto): Promise<boolean> {
+    await db
+      .update(users)
+      .set({ ...opts, updatedAt: new Date() })
+      .where(eq(users.id, id));
+
+    return true;
   }
 }

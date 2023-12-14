@@ -1,4 +1,4 @@
-import { Skill } from "@features/skills/domain/skill.schema";
+import { GetSkillsResultDto } from "@features/skills/domain/skill.schema";
 import { buildJsonSchemas } from "fastify-zod";
 import z from "zod";
 
@@ -43,7 +43,7 @@ export const GetUserResultDto = z.object({
   title: z.string().nullable(),
   description: z.string().nullable(),
   profile_picture: z.string().nullable(),
-  skills: z.array(Skill).nullable(),
+  skills: z.array(GetSkillsResultDto).nullable(),
 });
 
 export const UserDto = z.object({
@@ -61,6 +61,20 @@ export const LoginUserResult = z.object({
   password: z.string(),
 });
 
+export const UpdateUserDto = z.object({
+  username: z.string().optional(),
+  first_name: z.string().optional(),
+  last_name: z.string().optional(),
+  email: z.string().email().optional(),
+  role: z.string().optional(),
+  closed: z.boolean().optional(),
+  email_verified: z.boolean().optional(),
+  phone_verified: z.boolean().optional(),
+  title: z.string().nullable().optional(),
+  description: z.string().nullable().optional(),
+  profile_picture: z.string().nullable().optional(),
+});
+
 //JSON SCHEMAS
 export const { schemas, $ref } = buildJsonSchemas(
   {
@@ -68,6 +82,7 @@ export const { schemas, $ref } = buildJsonSchemas(
     CreateUserResult: CreateUserResult,
     LoginUser: LoginUserDto,
     GetUserQueryParams: GetUserDto,
+    UpdateUser: UpdateUserDto,
   },
   { $id: "users-schema" }
 );

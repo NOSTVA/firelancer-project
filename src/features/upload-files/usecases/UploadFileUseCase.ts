@@ -1,17 +1,12 @@
 import { IUseCase } from "@shared/IUseCase";
-import { TUploadFileDto, TUploadFileResult } from "../domain/file";
+import { TCreateUploadFileDto, TCreateUploadFileResultDto } from "../domain/file";
 import { IUploadFileRepository } from "../interfaces/IUploadFileRepository";
 
-export class UploadFileUseCase implements IUseCase<TUploadFileDto, TUploadFileResult> {
+export class UploadFileUseCase implements IUseCase<TCreateUploadFileDto, TCreateUploadFileResultDto> {
   public constructor(private readonly _fileRepo: IUploadFileRepository) {}
 
-  public execute = async (input: TUploadFileDto): Promise<TUploadFileResult> => {
+  public execute = async (input: TCreateUploadFileDto): Promise<TCreateUploadFileResultDto> => {
     const result = await this._fileRepo.save(input);
-
-    if (!result) {
-      throw new Error("UploadFile failed");
-    }
-
     return result;
   };
 }

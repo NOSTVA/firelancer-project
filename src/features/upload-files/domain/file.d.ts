@@ -1,10 +1,15 @@
-import { GetUploadFileDto, UploadFileDto, UploadFileResult } from "@features/users/domain/user";
-import { z } from "zod";
+import z from "zod";
+import {
+  CreateUploadFileDto,
+  CreateUploadFileResultDto,
+  GetUploadFileDto,
+  GetUploadFileResultDto,
+} from "./file.schema";
 
-export type TUploadFileDto = z.infer<typeof UploadFileDto>;
+export type TCreateUploadFileDto = z.infer<typeof CreateUploadFileDto>;
 
-export type TUploadFileResult = z.infer<typeof UploadFileResult>;
+export type TCreateUploadFileResultDto = z.infer<typeof CreateUploadFileResultDto>;
 
 export type TGetUploadFileDto = z.infer<typeof GetUploadFileDto>;
 
-export type TFileDto = z.infer<typeof FileDto>;
+export type GetUploadFileResultDto = z.infer<typeof GetUploadFileResultDto>;
