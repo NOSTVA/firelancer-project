@@ -1,4 +1,4 @@
-import { user_types } from "@infrastructure/drizzle/schema";
+import { Skill } from "@features/skills/domain/skill.schema";
 import { buildJsonSchemas } from "fastify-zod";
 import z from "zod";
 
@@ -16,7 +16,34 @@ export const CreateUserResult = z.object({
 });
 
 export const GetUserDto = z.object({
+  users: z.array(z.string().uuid()).min(1),
+  avatar: z.boolean().default(false).optional(),
+  skills: z.boolean().default(false).optional(),
+  status: z.boolean().default(false).optional(),
+  title: z.boolean().default(false).optional(),
+  description: z.boolean().default(false).optional(),
+  profile_picture: z.boolean().default(false).optional(),
+});
+
+export const GetUserResultDto = z.object({
   id: z.string().uuid(),
+  username: z.string(),
+  first_name: z.string(),
+  last_name: z.string(),
+  email: z.string().email(),
+  role: z.string(),
+  closed: z.boolean(),
+  registration_date: z.date(),
+  status: z
+    .object({
+      email_verified: z.boolean(),
+      phone_verified: z.boolean(),
+    })
+    .nullable(),
+  title: z.string().nullable(),
+  description: z.string().nullable(),
+  profile_picture: z.string().nullable(),
+  skills: z.array(Skill).nullable(),
 });
 
 export const UserDto = z.object({

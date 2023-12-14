@@ -24,6 +24,7 @@ export class Server {
     app.register(import("@plugins/authentication"));
 
     app.register(import("@features/users/routes/auth.routes"));
+    app.register(import("@features/users/routes/users.routes"), { prefix: "users" });
 
     // GRACEFUL DISCONNECT
     closeWithGrace({ delay: 30000 }, ({ signal, err }) => {

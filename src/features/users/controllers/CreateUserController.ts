@@ -7,6 +7,6 @@ export class CreateUserController {
 
   public handle = async (req: FastifyRequest<{ Body: TCreateUserDto }>, res: FastifyReply): Promise<void> => {
     const result = await this._useCase.execute(req.body);
-    res.code(201).send({ id: result.id });
+    res.code(201).send(result);
   };
 }
