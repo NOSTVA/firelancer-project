@@ -8,10 +8,6 @@ export class CreateUserUseCase implements IUseCase<TCreateUserDto, TCreateUserRe
   public execute = async (input: TCreateUserDto): Promise<TCreateUserResult> => {
     const result = await this._userRepo.save(input);
 
-    if (!result) {
-      throw new Error("Could not save user");
-    }
-
     return result;
   };
 }

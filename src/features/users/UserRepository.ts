@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { IUserRepository } from "./interfaces/IUserRepository";
-import { TCreateUserDto, TCreateUserResult, TGetUserDto, TUserDto } from "./domain/user";
-import { users } from "@infrastructure/drizzle/schema";
+import { TCreateUserDto, TCreateUserResult, TGetUserDto, TLoginUserResult, TUserDto } from "./domain/user";
+import { user_types, users } from "@infrastructure/drizzle/schema";
 import { db } from "@infrastructure/drizzle/db";
 
 export class UserRepository implements IUserRepository {
@@ -17,8 +17,16 @@ export class UserRepository implements IUserRepository {
     }
   }
 
-  public async find(opts: TGetUserDto): Promise<TUserDto | undefined> {
-    const result = await db.select({ id: users.id, username: users.username }).from(users).where(eq(users.id, opts.id));
+  public async findById(id: string): Promise<TUserDto | undefined> {
+    const result = await db.select({ id: users.id, username: users.username }).from(users).where(eq(users.id, id));
+    return result[0];
+  }
+
+  public async findByEmail(email: string): Promise<TLoginUserResult | undefined> {
+    const result = await db
+      .select({ id: users.id, username: users.username, password: users.password })
+      .from(users)
+      .where(eq(users.email, email));
     return result[0];
   }
 }

@@ -4,11 +4,11 @@
     "module": "commonjs",
     "baseUrl": "./src",
     "paths": {
-      "@main/*": ["main/*"],
       "@config/*": ["config/*"],
       "@infrastructure/*": ["infrastructure/*"],
       "@shared/*": ["shared/*"],
-      "@features/*": ["features/*"]
+      "@features/*": ["features/*"],
+      "@plugins/*": ["plugins/*"]
     },
     "rootDirs": ["src", "dist"],
     "outDir": "./dist",

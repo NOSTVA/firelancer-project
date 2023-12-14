@@ -11,7 +11,7 @@
     "db:drop": "drizzle-kit drop --config=src/config/drizzle.config.ts",
     "db:push": "drizzle-kit push:pg --config=src/config/drizzle.config.ts",
     "studio": "drizzle-kit studio --config=src/config/drizzle.config.ts",
-    "secret-key": "@fastify/secure-session | Out-File -Encoding default -NoNewline -FilePath secret-key"
+    "secret-key": "npx @fastify/secure-session > secret-key"
   },
   "keywords": [],
   "author": "",
@@ -54,6 +54,7 @@
     "@main": "dist/src/main",
     "@config": "dist/src/config",
     "@shared": "dist/src/shared",
-    "@features": "dist/src/features"
+    "@features": "dist/src/features",
+    "@plugins": "dist/src/plugins"
   }
 }

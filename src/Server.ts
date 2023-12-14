@@ -21,6 +21,10 @@ export class Server {
     app.register(import("@fastify/swagger"), swaggerConfig);
     app.register(import("@fastify/swagger-ui"), swaggerUiConfig);
 
+    app.register(import("@plugins/authentication"));
+
+    app.register(import("@features/users/routes/auth.routes"));
+
     // GRACEFUL DISCONNECT
     closeWithGrace({ delay: 30000 }, ({ signal, err }) => {
       if (err) app.log.error(err);

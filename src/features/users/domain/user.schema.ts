@@ -1,3 +1,5 @@
+import { user_types } from "@infrastructure/drizzle/schema";
+import { buildJsonSchemas } from "fastify-zod";
 import z from "zod";
 
 export const CreateUserDto = z.object({
@@ -21,3 +23,24 @@ export const UserDto = z.object({
   id: z.string().uuid(),
   username: z.string(),
 });
+
+export const LoginUserDto = z.object({
+  email: z.string().email(),
+  password: z.string(),
+});
+
+export const LoginUserResult = z.object({
+  ...UserDto.shape,
+  password: z.string(),
+});
+
+//JSON SCHEMAS
+export const { schemas, $ref } = buildJsonSchemas(
+  {
+    CreateUser: CreateUserDto,
+    CreateUserResult: CreateUserResult,
+    LoginUser: LoginUserDto,
+    GetUserQueryParams: GetUserDto,
+  },
+  { $id: "users-schema" }
+);
