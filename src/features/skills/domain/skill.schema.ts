@@ -11,7 +11,7 @@ export const Category = z.object({
   name: z.string(),
 });
 
-export const Skill = z.object({
+export const GetSkillsResultDto = z.object({
   id: z.string().uuid(),
   name: z.string(),
   category: Category.nullable().optional(),
@@ -22,7 +22,7 @@ export const Skill = z.object({
 export const { schemas, $ref } = buildJsonSchemas(
   {
     SkillsQueryParams: GetSkillsDto,
-    Skills: z.array(Skill),
+    Skills: z.array(GetSkillsResultDto),
   },
   { $id: "skills-schemas" }
 );

@@ -25,6 +25,7 @@ export class Server {
 
     app.register(import("@features/users/routes/auth.routes"));
     app.register(import("@features/users/routes/users.routes"), { prefix: "users" });
+    app.register(import("@features/skills/routes/skills.routes"), { prefix: "skills" });
 
     // GRACEFUL DISCONNECT
     closeWithGrace({ delay: 30000 }, ({ signal, err }) => {
