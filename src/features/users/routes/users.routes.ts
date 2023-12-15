@@ -22,5 +22,5 @@ export default async function (app: FastifyInstance): Promise<void> {
     getUserController.handle
   );
 
-  app.register(import("./self.routes"));
+  app.register(import("./self.routes"), { prefix: "self" });
 }
