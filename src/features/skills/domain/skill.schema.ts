@@ -18,11 +18,17 @@ export const GetSkillsResultDto = z.object({
   active_projects_count: z.number().optional(),
 });
 
+export const UserSkillDto = z.object({
+  user_id: z.string().uuid(),
+  skill_id: z.string(),
+});
+
 // JSON SCHEMAS
 export const { schemas, $ref } = buildJsonSchemas(
   {
     SkillsQueryParams: GetSkillsDto,
     Skills: z.array(GetSkillsResultDto),
+    UserSkill: UserSkillDto,
   },
   { $id: "skills-schemas" }
 );

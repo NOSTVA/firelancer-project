@@ -11,6 +11,7 @@ import {
 } from "./domain/user";
 import { skill_categories, skills, user_skills, users } from "@infrastructure/drizzle/schema";
 import { db } from "@infrastructure/drizzle/db";
+import { TUserSkillDto } from "@features/skills/domain/skill";
 
 export class UserRepository implements IUserRepository {
   public async save(user: TCreateUserDto): Promise<TCreateUserResult> {
@@ -101,8 +102,8 @@ export class UserRepository implements IUserRepository {
     return Object.values(result);
   }
 
-  public async findById(id: string): Promise<TUserDto | undefined> {
-    const result = await db.select({ id: users.id, username: users.username }).from(users).where(eq(users.id, id));
+  public async findById(user_id: string): Promise<TUserDto | undefined> {
+    const result = await db.select({ id: users.id, username: users.username }).from(users).where(eq(users.id, user_id));
     return result[0];
   }
 
@@ -114,12 +115,30 @@ export class UserRepository implements IUserRepository {
     return result[0];
   }
 
-  public async update(id: string, opts: TUpdateUserDto): Promise<boolean> {
+  public async update(user_id: string, opts: TUpdateUserDto): Promise<boolean> {
     await db
       .update(users)
       .set({ ...opts, updatedAt: new Date() })
-      .where(eq(users.id, id));
+      .where(eq(users.id, user_id));
 
     return true;
+  }
+
+  public async setSkills(user_id: string, skills: Set<string>): Promise<boolean> {
+    const userSkills = [...skills].map<TUserSkillDto>((skill_id) => ({ user_id, skill_id }));
+
+    try {
+      await db.transaction(async (tx) => {
+        await tx.delete(user_skills).where(eq(user_skills.user_id, user_id));
+        await tx.insert(user_skills).values(userSkills);
+      });
+
+      return true;
+    } catch (err: any) {
+      if (err.code === "23503") {
+        throw new Error("Invalid skill or user information");
+      }
+      return false;
+    }
   }
 }
