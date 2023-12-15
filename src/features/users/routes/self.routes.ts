@@ -20,10 +20,11 @@ const editProfileController = new EditProfileController(updateUserUseCase);
 const updateUserSkillsController = new UpdateUserSkillsController(updateUserSkillsUseCase);
 
 export default async function (app: FastifyInstance): Promise<void> {
+  app.addHook("preValidation", app.authenticate_user);
+
   app.put(
     "/profile_picture",
     {
-      preValidation: [app.authenticate_user],
       schema: {
         tags: ["users"],
         security: [{ cookieAuth: [] }],
@@ -44,7 +45,6 @@ export default async function (app: FastifyInstance): Promise<void> {
   app.put(
     "/profile",
     {
-      preValidation: [app.authenticate_user],
       schema: {
         tags: ["users"],
         security: [{ cookieAuth: [] }],
@@ -65,7 +65,6 @@ export default async function (app: FastifyInstance): Promise<void> {
   app.put(
     "/skills",
     {
-      preValidation: [app.authenticate_user],
       schema: {
         tags: ["users"],
         security: [{ cookieAuth: [] }],
