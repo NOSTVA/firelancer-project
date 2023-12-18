@@ -1,10 +1,19 @@
 import fs from "fs";
 import path from "path";
 
+const OUT_DIR = ".public";
+const IMAGES_DIR = path.join(OUT_DIR, "images");
+const VIDEOS_DIR = path.join(OUT_DIR, "videos");
+
+if (!fs.existsSync(OUT_DIR)) {
+  fs.mkdirSync(IMAGES_DIR, { recursive: true });
+  fs.mkdirSync(VIDEOS_DIR, { recursive: true });
+}
+
 export class UploadFile {
-  public readonly out_dir = ".public";
-  public readonly img_dir = "images";
-  public readonly vid_dir = "videos";
+  public readonly out_dir = OUT_DIR;
+  public readonly img_dir = IMAGES_DIR;
+  public readonly vid_dir = VIDEOS_DIR;
   public readonly video_mimetypes = ["video/mp4", "video/webm", "video/ogg"];
   public readonly image_mimetypes = ["image/png", "image/jpg", "image/jpeg", "image/webp"];
 
@@ -18,12 +27,12 @@ export class UploadFile {
     const filename = `${this.filename}.${this.mimetype.split("/")[1]}`;
 
     if (this.image_mimetypes.includes(this.mimetype)) {
-      fs.writeFileSync(path.join(this.out_dir, this.img_dir, filename), this.data);
+      fs.writeFileSync(path.join(this.img_dir, filename), this.data);
       return { filename };
     }
 
     if (this.video_mimetypes.includes(this.mimetype)) {
-      fs.writeFileSync(path.join(this.out_dir, this.vid_dir, filename), this.data);
+      fs.writeFileSync(path.join(this.vid_dir, filename), this.data);
       return { filename };
     }
 

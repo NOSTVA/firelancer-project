@@ -26,9 +26,11 @@ export class Server {
     app.register(import("@fastify/swagger"), swaggerConfig);
     app.register(import("@fastify/swagger-ui"), swaggerUiConfig);
 
+    // MULTIPART
+    app.register(import("@fastify/multipart"), { attachFieldsToBody: true });
+
     // PLUGINS
     app.register(import("@plugins/authentication"));
-    app.register(import("@plugins/upload-file"));
 
     // API
     app.register(import("@features/users/routes/auth.routes"));
