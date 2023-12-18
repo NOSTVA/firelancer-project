@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { UserRepository } from "../UserRepository";
+import { UserRepository } from "../../../repositories/UserRepository";
 import { $ref, schemas } from "../domain/user.schema";
 import { GetUserUseCase } from "../usecases/GetUserUseCase";
 import { GetUserController } from "../controllers/GetUserController";

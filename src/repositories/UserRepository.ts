@@ -1,5 +1,5 @@
 import { eq, inArray } from "drizzle-orm";
-import { IUserRepository } from "./interfaces/IUserRepository";
+import { IUserRepository } from "../interfaces/IUserRepository";
 import {
   TCreateUserDto,
   TCreateUserResult,
@@ -8,7 +8,7 @@ import {
   TLoginUserResult,
   TUpdateUserDto,
   TUserDto,
-} from "./domain/user";
+} from "../features/users/domain/user";
 import { skill_categories, skills, user_skills, users } from "@infrastructure/drizzle/schema";
 import { db } from "@infrastructure/drizzle/db";
 import { TUserSkillDto } from "@features/skills/domain/skill";

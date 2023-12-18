@@ -4,7 +4,7 @@ import passport from "@fastify/passport";
 import { env } from "@config/env";
 import { TUserDto } from "@features/users/domain/user";
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { UserRepository } from "@features/users/UserRepository";
+import { UserRepository } from "repositories/UserRepository";
 import { LoginUserUseCase } from "@features/users/usecases/LoginUserUseCase";
 
 const LocalStrategy = require("passport-local");

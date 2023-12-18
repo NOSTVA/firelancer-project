@@ -1,8 +1,7 @@
-import type { IUseCase } from "@shared/IUseCase";
 import { TCreateUserDto, TCreateUserResult } from "../domain/user";
-import { IUserRepository } from "../interfaces/IUserRepository";
+import { IUserRepository } from "../../../interfaces/IUserRepository";
 
-export class CreateUserUseCase implements IUseCase<TCreateUserDto, TCreateUserResult> {
+export class CreateUserUseCase {
   public constructor(private readonly _userRepo: IUserRepository) {}
 
   public execute = async (input: TCreateUserDto): Promise<TCreateUserResult> => {

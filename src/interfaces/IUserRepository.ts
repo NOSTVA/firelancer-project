@@ -6,7 +6,7 @@ import {
   TLoginUserResult,
   TUpdateUserDto,
   TUserDto,
-} from "../domain/user";
+} from "../features/users/domain/user";
 
 export interface IUserRepository {
   save(user: TCreateUserDto): Promise<TCreateUserResult>;

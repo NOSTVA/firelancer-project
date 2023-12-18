@@ -1,6 +1,6 @@
 import { project_skills, skill_categories, skills } from "@infrastructure/drizzle/schema";
-import { TGetSkillsDto, TGetSkillsResultDto } from "./domain/skill";
-import { ISkillsRepository } from "./interfaces/ISkillsRepository";
+import { TGetSkillsDto, TGetSkillsResultDto } from "../features/skills/domain/skill";
+import { ISkillsRepository } from "../interfaces/ISkillsRepository";
 import { eq, sql } from "drizzle-orm";
 import { db } from "@infrastructure/drizzle/db";
 

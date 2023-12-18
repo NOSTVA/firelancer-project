@@ -1,7 +1,6 @@
-import { IUseCase } from "@shared/IUseCase";
-import { IUserRepository } from "../interfaces/IUserRepository";
+import { IUserRepository } from "../../../interfaces/IUserRepository";
 
-export class UpdateUserSkillsUseCase implements IUseCase<{ userId: string; data: string[] }, boolean> {
+export class UpdateUserSkillsUseCase {
   public constructor(private readonly _userRepo: IUserRepository) {}
 
   public execute = async (input: { userId: string; data: string[] }): Promise<boolean> => {

@@ -1,9 +1,9 @@
 import { FastifyInstance } from "fastify";
-import { UserRepository } from "../UserRepository";
+import { UserRepository } from "../../../repositories/UserRepository";
 import { EditProfilePictureController } from "../controllers/EditProfilePictureController";
 import { UpdateUserUseCase } from "../usecases/UpdateUserUseCase";
 import { UploadFileUseCase } from "@features/upload-files/usecases/UploadFileUseCase";
-import { UploadFileRepository } from "@features/upload-files/UploadFileRepository";
+import { UploadFileRepository } from "repositories/UploadFileRepository";
 import { EditProfileController } from "../controllers/EditProfileController";
 import { UpdateUserSkillsController } from "../controllers/UpdateUserSkillsController";
 import { UpdateUserSkillsUseCase } from "../usecases/UpdateUserSkillsUseCase";

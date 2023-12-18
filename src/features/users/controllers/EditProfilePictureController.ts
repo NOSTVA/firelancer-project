@@ -12,13 +12,11 @@ export class EditProfilePictureController {
   public handle = async (req: FastifyRequest<{ Body: { profile_picture: MultipartFile } }>, res: FastifyReply) => {
     if (!req.user?.id) throw new Error("User does not exist");
 
-    const uploaded = await res.upload({
-      type: "image",
-      file: req.body.profile_picture,
+    const file = await this._uploadFileUseCase.execute({
+      data: await req.body.profile_picture.toBuffer(),
+      mimetype: req.body.profile_picture.mimetype,
       filename: "ppc_" + req.user.id,
     });
-
-    const file = await this._uploadFileUseCase.execute(uploaded);
 
     const result = await this._updateUserUseCase.execute({
       userId: req.user.id,

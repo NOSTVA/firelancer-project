@@ -1,8 +1,7 @@
-import type { IUseCase } from "@shared/IUseCase";
 import { TGetUserDto, TGetUserResultDto } from "../domain/user";
-import { IUserRepository } from "../interfaces/IUserRepository";
+import { IUserRepository } from "../../../interfaces/IUserRepository";
 
-export class GetUserUseCase implements IUseCase<TGetUserDto, TGetUserResultDto[]> {
+export class GetUserUseCase {
   public constructor(private readonly _userRepo: IUserRepository) {}
 
   public execute = async (input: TGetUserDto): Promise<TGetUserResultDto[]> => {

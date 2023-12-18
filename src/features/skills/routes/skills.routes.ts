@@ -1,5 +1,5 @@
 import { FastifyInstance } from "fastify";
-import { SkillsRepository } from "../SkillsRepository";
+import { SkillsRepository } from "../../../repositories/SkillsRepository";
 import { GetSkillsController } from "../controllers/GetSkillsController";
 import { GetSkillsUseCase } from "../usecases/GetSkillsUseCase";
 import { $ref, schemas } from "../domain/skill.schema";

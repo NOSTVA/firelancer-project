@@ -1,6 +1,6 @@
 import { db } from "@infrastructure/drizzle/db";
-import { TCreateUploadFileDto, TCreateUploadFileResultDto } from "./domain/file";
-import { IUploadFileRepository } from "./interfaces/IUploadFileRepository";
+import { TCreateUploadFileDto, TCreateUploadFileResultDto } from "../features/upload-files/domain/file";
+import { IUploadFileRepository } from "../interfaces/IUploadFileRepository";
 import { files } from "@infrastructure/drizzle/schema";
 
 export class UploadFileRepository implements IUploadFileRepository {
