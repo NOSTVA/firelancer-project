@@ -3,4 +3,5 @@
 .env
 .migrations
 .public
+public
 secret-key

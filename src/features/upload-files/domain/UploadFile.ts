@@ -1,7 +1,8 @@
+import { env } from "@config/env";
 import fs from "fs";
 import path from "path";
 
-const OUT_DIR = ".public";
+const OUT_DIR = env.PUBLIC_DIR;
 const IMAGES_DIR = path.join(OUT_DIR, "images");
 const VIDEOS_DIR = path.join(OUT_DIR, "videos");
 

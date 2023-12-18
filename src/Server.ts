@@ -19,7 +19,7 @@ export class Server {
     // SERVE STATIC FILES
     app.register(import("@fastify/static"), {
       root: path.join(__dirname, "../.public"),
-      prefix: "/public/",
+      prefix: "/static/",
     });
 
     // SWAGGER

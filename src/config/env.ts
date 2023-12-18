@@ -11,6 +11,7 @@ const schema = z.object({
   POSTGRES_PASSWORD: z.string(),
   POSTGRES_DATABASE: z.string(),
   SESSION_COOKIE_MAX_AGE: z.number().default(60 * 60 * 24 * 30),
+  PUBLIC_DIR: z.string().default("public"),
 });
 
 export const env = envSchema<z.infer<typeof schema>>({
