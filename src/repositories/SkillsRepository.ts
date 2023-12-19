@@ -5,7 +5,7 @@ import { eq, sql } from "drizzle-orm";
 import { db } from "@infrastructure/drizzle/db";
 
 export class SkillsRepository implements ISkillsRepository {
-  public async find(opts: TGetSkillsDto): Promise<TGetSkillsResultDto[]> {
+  public async getAll(opts: TGetSkillsDto): Promise<TGetSkillsResultDto[]> {
     const query = db
       .select({
         id: skills.id,

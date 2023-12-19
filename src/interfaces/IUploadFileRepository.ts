@@ -1,5 +1,5 @@
 import { TCreateUploadFileDto, TCreateUploadFileResultDto } from "../features/upload-files/domain/file";
 
 export interface IUploadFileRepository {
-  save(file: TCreateUploadFileDto): Promise<TCreateUploadFileResultDto>;
+  create(file: TCreateUploadFileDto): Promise<TCreateUploadFileResultDto>;
 }

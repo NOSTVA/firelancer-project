@@ -14,7 +14,7 @@ import { db } from "@infrastructure/drizzle/db";
 import { TUserSkillDto } from "@features/skills/domain/skill";
 
 export class UserRepository implements IUserRepository {
-  public async save(user: TCreateUserDto): Promise<TCreateUserResult> {
+  public async create(user: TCreateUserDto): Promise<TCreateUserResult> {
     try {
       const result = await db.insert(users).values(user).returning({ id: users.id });
       return result[0];
@@ -26,7 +26,7 @@ export class UserRepository implements IUserRepository {
     }
   }
 
-  public async find(opts: TGetUserDto): Promise<TGetUserResultDto[]> {
+  public async get(opts: TGetUserDto): Promise<TGetUserResultDto[]> {
     let query = db
       .select({
         id: users.id,
@@ -102,12 +102,12 @@ export class UserRepository implements IUserRepository {
     return Object.values(result);
   }
 
-  public async findById(user_id: string): Promise<TUserDto | undefined> {
+  public async getById(user_id: string): Promise<TUserDto | undefined> {
     const result = await db.select({ id: users.id, username: users.username }).from(users).where(eq(users.id, user_id));
     return result[0];
   }
 
-  public async findByEmail(email: string): Promise<TLoginUserResult | undefined> {
+  public async getByEmail(email: string): Promise<TLoginUserResult | undefined> {
     const result = await db
       .select({ id: users.id, username: users.username, password: users.password })
       .from(users)
